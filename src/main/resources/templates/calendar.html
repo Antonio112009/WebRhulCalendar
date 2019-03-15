@@ -1,0 +1,75 @@
+<!--
+  ~ Copyright (c)
+  ~ Created and developed by Antonio112009
+  -->
+
+<!--
+  _____   _    _  _    _  _
+ |  __ \ | |  | || |  | || |
+ | |__) || |__| || |  | || |
+ |  _  / |  __  || |  | || |
+ | | \ \ | |  | || |__| || |____
+ |_|  \_\|_|  |_| \____/ |______|
+ __          __    _       _____        _                   _
+ \ \        / /   | |     / ____|      | |                 | |
+  \ \  /\  / /___ | |__  | |      __ _ | |  ___  _ __    __| |  __ _  _ __
+   \ \/  \/ // _ \| '_ \ | |     / _` || | / _ \| '_ \  / _` | / _` || '__|
+    \  /\  /|  __/| |_) || |____| (_| || ||  __/| | | || (_| || (_| || |
+     \/  \/  \___||_.__/  \_____|\__,_||_| \___||_| |_| \__,_| \__,_||_|
+          ___    __
+         / _ \  /_ |
+ __   __| | | |  | |
+ \ \ / /| | | |  | |
+  \ V / | |_| |_ | |
+   \_/   \___/(_)|_|
+   -->
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Week Calendar</title>
+    <link rel="stylesheet" th:href="@{css/timetable.css}">
+</head>
+<body>
+
+<div class="table">
+    <div>
+        <div></div>
+        <div><span>9:00</span></div>
+        <div><span>10:00</span></div>
+        <div><span>11:00</span></div>
+        <div><span>12:00</span></div>
+        <div><span>13:00</span></div>
+        <div><span>14:00</span></div>
+        <div><span>15:00</span></div>
+        <div><span>16:00</span></div>
+        <div><span>17:00</span></div>
+        <div><span>18:00</span></div>
+    </div>
+    <div th:each="day : ${subjects}">
+        <div>
+            <span th:text="${day[2].getDayOfWeek()}"></span>
+        </div>
+        <div th:each="i : ${#numbers.sequence(9,18,1)}">
+            <span th:if="${(day[i] != null) && (day[i].getType().equals('Seminar'))}" th:utext="${day[i].getSubject() + '<br>' + day[i].getType() + '<br>' + day[i].getLocation()}" class="color-lab"></span>
+            <span th:if="${(day[i] != null) && (day[i].getType().equals('Lecture'))}" th:utext="${day[i].getSubject() + '<br>' + day[i].getType() + '<br>' + day[i].getLocation()}" class="color-lecture"></span>
+            <span th:if="${(day[i] != null) && (day[i].getType().equals('Lab'))}" th:utext="${day[i].getSubject() + '<br>' + day[i].getType() + '<br>' + day[i].getLocation()}" class="color-lab"></span>
+            <span th:if="${(day[i] != null) && (day[i].getType().equals('PC'))}" th:utext="${day[i].getSubject() + '<br>' + day[i].getType() + '<br>' + day[i].getLocation()}" class="color-lab"></span>
+            <span th:if="${(day[i] != null) && (day[i].getType().startsWith('Optional'))}" th:utext="${day[i].getSubject() + '<br>' + day[i].getType() + '<br>' + day[i].getLocation()}" class="color-lab"></span>
+            <span th:if="${(day[i] != null) && (day[i].getType().startsWith('Workshop'))}" th:utext="${day[i].getSubject() + '<br>' + day[i].getType() + '<br>' + day[i].getLocation()}" class="color-lab"></span>
+            <span th:if="${day[i] == null}"></span>
+        </div>
+    </div>
+    <div>
+        <div><span>Report issue</span></div>
+        <div><span><a href="https://github.com/Antonio112009/WebRhulCalendar/issues">Report Issue</a></span></div>
+    </div>
+
+
+</div>
+</body>
+</html>
+

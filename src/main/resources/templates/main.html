@@ -1,0 +1,72 @@
+<!--
+  ~ Copyright (c)
+  ~ Created and developed by Antonio112009
+  -->
+
+<!--
+  _____   _    _  _    _  _
+ |  __ \ | |  | || |  | || |
+ | |__) || |__| || |  | || |
+ |  _  / |  __  || |  | || |
+ | | \ \ | |  | || |__| || |____
+ |_|  \_\|_|  |_| \____/ |______|
+ __          __    _       _____        _                   _
+ \ \        / /   | |     / ____|      | |                 | |
+  \ \  /\  / /___ | |__  | |      __ _ | |  ___  _ __    __| |  __ _  _ __
+   \ \/  \/ // _ \| '_ \ | |     / _` || | / _ \| '_ \  / _` | / _` || '__|
+    \  /\  /|  __/| |_) || |____| (_| || ||  __/| | | || (_| || (_| || |
+     \/  \/  \___||_.__/  \_____|\__,_||_| \___||_| |_| \__,_| \__,_||_|
+          ___    __
+         / _ \  /_ |
+ __   __| | | |  | |
+ \ \ / /| | | |  | |
+  \ V / | |_| |_ | |
+   \_/   \___/(_)|_|
+   -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Timetable</title>
+</head>
+<body>
+<p>
+    Welcome to unofficial WebRHULCalendar.<br><br>
+
+    To see your timetable you need to provide iCalendar link<br><br>
+
+    How to find iCalendar link?<br>
+    1 - Sign in in <a href="https://webtimetables.royalholloway.ac.uk" target="_blank">https://webtimetables.royalholloway.ac.uk</a><br>
+    2 - Go to <b>My Timetables</b><br>
+    3 - Select <b>Calendar Download</b><br>
+    4 - Press <b>View Timetable</b><br>
+    5 - Press <b>Android(tm) and others</b><br>
+    6 - Copy bold link which starts with <b>https://webtimetables.royalholloway.ac.uk/ical/........</b><br>
+    7 - Add link to input field and press <b>Submit</b><br>
+    <br>
+    P.S. Thank you for at least for visiting webpage. I'm really appreciate it!<br>
+    <br>
+    Tony.
+</p>
+<p>
+<a href="https://github.com/Antonio112009/WebRhulCalendar/issues">Report Issue</a>
+</p>
+<form th:action="@{/}" th:object="${user}" method="POST">
+    <label> weblink to your iCalendar<br>
+        <input type="text" th:field="*{url}"
+               style="padding: .5em; width: 70em;"
+               placeholder="https://webtimetables.royalholloway.ac.uk/............">
+    </label>
+    <input type="submit" class="button-1" style="cursor: pointer;" value="Submit">
+
+    <h3 th:if="${#fields.hasErrors('url')}" th:errors="*{url}" style="color:red;"></h3>
+    <h3 th:if="${idshka != null}" style="color:red;" th:text="${idshka}"></h3>
+    <h3 th:if="${success != null}" style="color:green;" th:text="${success}"></h3>
+    <h3 th:if="${link != null}" style="margin-bottom: 0;">Personal link:</h3>
+    <a th:if="${link != null}" th:href="${link}" th:text="${link}"></a>
+</form>
+
+<p>Delete form would be added soon. For now - report about this in <b>GitHub</b> by telling me your permanent id</p>
+</body>
+</html>
