@@ -159,8 +159,7 @@ public class Cutter {
 
     public List<Subject[]> showTimetable(String id){
         try {
-            BufferedReader reader = null;
-            Subject day = new Subject();
+            BufferedReader reader;
             String currentLine;
             boolean read = false;
 

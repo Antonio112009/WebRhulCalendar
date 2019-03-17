@@ -10,6 +10,5 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Long> {
 
     User findByUrl(String url);
-
     List<User> findAll();
 }

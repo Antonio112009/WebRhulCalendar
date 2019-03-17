@@ -9,6 +9,6 @@ public class RunWeb {
 
     public static void main(String[] args) {
         SpringApplication.run(RunWeb.class, args);
-        new Threads().start();
+//        new Threads().start();
     }
 }
